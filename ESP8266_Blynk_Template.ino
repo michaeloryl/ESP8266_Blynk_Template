@@ -8,9 +8,12 @@
 #define PORT_SPEED   9600 // speed to use for the serial monitor
 
 // Constants
+// This is the access point to look for when hitting the config web server from your phone/PC
 #define AP_NAME "Blynk_Project_Name"
-#define EEPROM_SALT 1
+// change salt to force settings to be re-written into EEPROM
+#define EEPROM_SALT 0
 
+// these are the defaults to try connecting with
 typedef struct {
   char  bootState[4]      = "off";
   char  blynkToken[33]    = "e5ed22bfca2a499491e0bf26c17d0dc2"; // Tester token
@@ -53,6 +56,7 @@ void setup() {
     Serial.println("Invalid settings in EEPROM, trying with defaults");
     WMSettings defaults;
     settings = defaults;
+    shouldSaveConfig = true;
   }
 
   WiFiManagerParameter custom_blynk_token("blynk-token", "<br/>Blynk Token:<br/>", settings.blynkToken, 33);
