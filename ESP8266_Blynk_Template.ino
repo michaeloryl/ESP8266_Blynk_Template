@@ -3,7 +3,7 @@
 #include <WiFiManager.h>
 #include <EEPROM.h>
 
-#define PIN_SETUP    D5   // this pin LOW causes it to enter WiFi config mode
+#define PIN_SETUP    D5   // setting this pin LOW erases EEPROM and forces WiFi config mode
 #define PIN_LED      D3   // built in LED
 #define PORT_SPEED   9600 // speed to use for the serial monitor
 
